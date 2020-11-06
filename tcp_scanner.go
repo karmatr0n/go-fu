@@ -23,7 +23,6 @@ func worker(proto string, dstHost string, ports, results chan int) {
 }
 
 func main() {
-  
   dstHost := os.Args[1]
 
   ports := make(chan int, 100)
