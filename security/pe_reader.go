@@ -20,6 +20,13 @@ func ioReader(file string) io.ReaderAt {
 	return r
 }
 
+func hasPECharacteristics(fc uint16, c uint16) bool {
+	if (fc & c) == c {
+		return true
+	}
+	return false
+}
+
 func main() {
 	if len(os.Args) != 2 {
 		fmt.Println("Usage: pe_parser <pe_file>")
@@ -75,21 +82,8 @@ func main() {
 		x86_x64 = "x64"
 	}
 
-	var isDLL bool
-	var dll = uint16(0x2000)
-	if (f.Characteristics & dll) == dll {
-		isDLL = true
-	} else if (f.Characteristics & dll) != dll {
-		isDLL = false
-	}
-
-	var isSYS bool
-	var sys = uint16(0x1000)
-	if (f.Characteristics & sys) == sys {
-		isSYS = true
-	} else if (f.Characteristics & sys) != sys {
-		isSYS = false
-	}
+	isDLL := hasPECharacteristics(f.Characteristics, uint16(0x2000))
+	isSYS := hasPECharacteristics(f.Characteristics, uint16(0x1000))
 	f.Close()
 
 	fmt.Printf("OptionalHeader: %#x\n", f.OptionalHeader)
