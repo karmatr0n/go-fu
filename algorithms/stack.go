@@ -29,8 +29,7 @@ func (stack *Stack) Pop() error {
     return fmt.Errorf("The stack is empty")
   }
   i := len(stack.elements) - 1
-  stack.elements[i] = ""
-  stack.elements = stack.elements[0:i]
+  stack.elements = append(stack.elements[:i], stack.elements[i+1:]...)
   stack.size--
   return nil
 }
