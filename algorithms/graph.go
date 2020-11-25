@@ -70,5 +70,5 @@ func main() {
   fmt.Println(n1)
   fmt.Println(g.Nodes())
   g.AddEdge(n0, n2, 5)
-   fmt.Printf("Node 0 Neighbors %v\n",g.Neighbors(n0))
+  fmt.Printf("Node 0 Neighbors %v\n",g.Neighbors(n0))
 }
