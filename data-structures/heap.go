@@ -2,7 +2,7 @@
 package heap
 
 type Heap struct {
-	items []int
+	Items []int
 }
 
 func initHeap() *Heap {
@@ -22,11 +22,11 @@ func (h *Heap) GetParentIndex(childIndex int) int {
 }
 
 func (h *Heap) HasLeft(index int) bool {
-	return h.GetLeftIndex(index) < len(h.items)
+	return h.GetLeftIndex(index) < len(h.Items)
 }
 
 func (h *Heap) HasRight(index int) bool {
-	return h.GetRightIndex(index) < len(h.items)
+	return h.GetRightIndex(index) < len(h.Items)
 }
 
 func (h *Heap) HasParent(index int) bool {
@@ -34,17 +34,17 @@ func (h *Heap) HasParent(index int) bool {
 }
 
 func (h *Heap) Right(index int) int {
-	return h.items[h.GetRightIndex(index)]
+	return h.Items[h.GetRightIndex(index)]
 }
 
 func (h *Heap) Left(index int) int {
-	return h.items[h.GetLeftIndex(index)]
+	return h.Items[h.GetLeftIndex(index)]
 }
 
 func (h *Heap) Parent(index int) int {
-	return h.items[h.GetParentIndex(index)]
+	return h.Items[h.GetParentIndex(index)]
 }
 
 func (h *Heap) Swap(indexOne, indexTwo int) {
-	h.items[indexOne], h.items[indexTwo] = h.items[indexTwo], h.items[indexOne]
+	h.Items[indexOne], h.Items[indexTwo] = h.Items[indexTwo], h.Items[indexOne]
 }
